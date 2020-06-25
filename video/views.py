@@ -1,0 +1,15 @@
+from django.views import generic
+from .models import Video
+from django.urls import reverse_lazy
+# Create your views here.
+
+class VideoList(generic.ListView):
+    model = Video
+
+class VideoCreate(generic.CreateView):
+    model = Video
+    fields = '__all__'
+    success_url = reverse_lazy('video:video_list')
+
+class VideoDetail(generic.DetailView):
+    model = Video
